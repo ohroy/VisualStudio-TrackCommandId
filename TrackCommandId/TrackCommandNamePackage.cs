@@ -33,7 +33,7 @@ namespace TrackCommandId
         /// <summary>
         /// TrackCommandIdPackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "7c2e7a82-5453-4257-a867-cb49649b5bef";
+        public const string PackageGuidString = "7c2e7a82-5453-4257-a867-cb49649b5bee";
 
         #region Package Members
 

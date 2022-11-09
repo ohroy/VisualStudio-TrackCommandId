@@ -88,7 +88,7 @@ namespace TrackCommandId
             ThreadHelper.ThrowIfNotOnUIThread();
 
             //
-            if (!(CustomIn is null) || !(CustomOut is null))
+            if (!_showShortcut || !(CustomIn is null) || !(CustomOut is null))
             {
                 return;
             }
@@ -135,12 +135,12 @@ namespace TrackCommandId
 
                 if (_options.LogToOutputWindow)
                 {
-                    _outputPanel.OutAsync($"{cmd.Name} ({shortcut})").ConfigureAwait(false);
+                    _ = _outputPanel.OutAsync($"{cmd.Name} ({shortcut})").ConfigureAwait(false);
                 }
             }
             catch (Exception ex)
             {
-                _outputPanel.OutAsync(ex).ConfigureAwait(false);
+                _ = _outputPanel.OutAsync(ex).ConfigureAwait(false);
             }
         }
 
