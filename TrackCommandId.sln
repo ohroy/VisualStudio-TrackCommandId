@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackCommandId", "TrackCommandId\TrackCommandId.csproj", "{58B65087-8E5F-49B0-8254-484FD86BB1AE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackCommandName", "TrackCommandId\TrackCommandName.csproj", "{58B65087-8E5F-49B0-8254-484FD86BB1AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,6 +2,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
 
 namespace TrackCommandId
@@ -24,8 +25,10 @@ namespace TrackCommandId
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(TrackCommandIdPackage.PackageGuidString)]
-    public sealed class TrackCommandIdPackage : AsyncPackage
+    [Guid(TrackCommandNamePackage.PackageGuidString)]
+    [ProvideOptionPage(typeof(Options), "TrackCommandName", "Options", 0, 0, true, ProvidesLocalizedCategoryName = false)]
+    [ProvideAutoLoad(UIContextGuids80.NoSolution, PackageAutoLoadFlags.BackgroundLoad)]
+    public sealed class TrackCommandNamePackage : AsyncPackage
     {
         /// <summary>
         /// TrackCommandIdPackage GUID string.
@@ -46,6 +49,9 @@ namespace TrackCommandId
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+            var options = GetDialogPage(typeof(Options)) as Options;
+            var outPane = await OutputPanel.InitializeAsync(this, "TrackCommandName");
+            await CommandTracker.InitializeAsync(this, options, outPane);
         }
 
         #endregion
