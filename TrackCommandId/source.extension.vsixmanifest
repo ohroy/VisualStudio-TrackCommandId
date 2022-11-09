@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="CommandTracker.7461b973-3ea5-45f9-89f1-0a7b7b46ed0d" Version="1.1" Language="en-US" Publisher="rozbo" />
+        <Identity Id="CommandTracker.7461b973-3ea5-45f9-89f1-0a7b7b46ed0d" Version="1.3" Language="en-US" Publisher="rozbo" />
         <DisplayName>Command Tracker</DisplayName>
-        <Description xml:space="preserve">Track the current command name and short keyTrackCommandName</Description><Icon>logo.png</Icon>
+        <Description xml:space="preserve">Track the current command name and short keyTrackCommandName</Description>
+        <Icon>logo.png</Icon>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.0)">

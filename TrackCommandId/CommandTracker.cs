@@ -45,6 +45,7 @@ namespace TrackCommandId
 
         private readonly IVsStatusbar _statusbar;
         private readonly OutputPanel _outputPanel;
+        private readonly CommandEvents _events;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandTracker"/> class.
@@ -63,24 +64,25 @@ namespace TrackCommandId
             _statusbar = statusbar;
             _options = options ?? throw new ArgumentNullException(nameof(options));
             _outputPanel = outputPanel;
-            _initCmdEvents();
+            _events = _dte.Events.CommandEvents;
+            _events.BeforeExecute += BeforeExecute;
+            _events.AfterExecute += AfterExecute;
 
         }
 
-        private void _initCmdEvents()
-        {
-            ThreadHelper.ThrowIfNotOnUIThread();
-            // get the command event
-            var cmdEvents = _dte.Events.CommandEvents;
-            cmdEvents.BeforeExecute += BeforeExecute;
-            cmdEvents.AfterExecute += AfterExecute;
-        }
 
 
 
         private void BeforeExecute(string Guid, int ID, object CustomIn, object CustomOut, ref bool CancelDefault)
         {
-            _showShortcut = _options.ShowOnShortcut || !_keys.Any(key => Keyboard.IsKeyDown(key));
+            try
+            {
+                _showShortcut = _options.ShowOnShortcut || !_keys.Any(key => Keyboard.IsKeyDown(key));
+            }
+            catch (Exception e)
+            {
+
+            }
         }
 
         private void AfterExecute(string Guid, int ID, object CustomIn, object CustomOut)
@@ -104,8 +106,7 @@ namespace TrackCommandId
                 {
                     return;
                 }
-
-                if (string.IsNullOrWhiteSpace(cmd?.Name) || ShouldCommandBeIgnored(cmd))
+                if (string.IsNullOrWhiteSpace(cmd?.Name))
                 {
                     return;
                 }
@@ -118,7 +119,6 @@ namespace TrackCommandId
                 {
                     shortDescBuilder.Append(":");
                     shortDescBuilder.Append(shortcut);
-                    return;
                 }
 
                 if (_options.LogToStatusBar)

@@ -23,6 +23,7 @@ namespace TrackCommandId
 
         public OutputPanel(IVsOutputWindow output, string name)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             _name = name;
             //
             output.CreatePane(ref _guid, _name, 1, 1);
@@ -40,7 +41,7 @@ namespace TrackCommandId
         public async task OutAsync(object message)
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-            _pane.OutputString(DateTime.Now.ToShortTimeString() + ": " + message + Environment.NewLine);
+            _ = _pane.OutputString(DateTime.Now.ToShortTimeString() + ": " + message + Environment.NewLine);
         }
     }
 }
