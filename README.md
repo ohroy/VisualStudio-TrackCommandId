@@ -13,3 +13,16 @@
 
 
 经过一番思想挣扎，理智战胜了懒惰，我决定重写它。
+
+
+## the usage
+
+
+### how to install
+你可以通过vs内置的扩展管理里或者官方商店[https://marketplace.visualstudio.com/items?itemName=rozbo.command-tracker](https://marketplace.visualstudio.com/items?itemName=rozbo.command-tracker)下载，也可以在本仓库的[release](https://github.com/rozbo/VisualStudio-TrackCommandId/releases)页面下载。
+
+
+### how to use it
+
+你可以在设置里，启用本插件，根据你的配置，可以选择输出到状态栏、输出窗口、或者直接输出到剪切板，此后，每当你鼠标点击一个菜单，在以上的输出位置即可输出此命令的`command name`和`short key`(如果它绑定了快捷键的话)。
+

@@ -3,7 +3,7 @@
     <Metadata>
         <Identity Id="CommandTracker.7461b973-3ea5-45f9-89f1-0a7b7b46ed0d" Version="1.3" Language="en-US" Publisher="rozbo" />
         <DisplayName>Command Tracker</DisplayName>
-        <Description xml:space="preserve">Track the current command name and short keyTrackCommandName</Description>
+        <Description xml:space="preserve">Track the current command name and short key</Description>
         <Icon>logo.png</Icon>
     </Metadata>
     <Installation>
